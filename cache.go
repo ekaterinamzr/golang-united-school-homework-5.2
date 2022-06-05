@@ -25,7 +25,7 @@ func (c *Cache) Put(key, value string) {
 }
 
 func (c Cache) Keys() []string {
-	keys := make([]string, len(c.data))
+	keys := make([]string, 0, len(c.data))
 	for key := range c.data {
 		if deadline, ok := c.expiration[key]; !ok || time.Now().Before(deadline) {
 			keys = append(keys, key)
